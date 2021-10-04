@@ -12,9 +12,12 @@ import java.util.Vector;
 
 public class InventoryView{
     private JFrame frame;
-    private JTable textArea; //Text display of inventory.
-    private JPanel panel; //Display area.
-    private JPanel buttonPanel; //Button area.
+    //Text display of inventory.
+    private JTable textArea;
+    //Display area.
+    private JPanel panel;
+    //Button area.
+    private JPanel buttonPanel;
     private JButton addItem;
     private JButton removeItem;
     private JButton editItem;
@@ -22,8 +25,10 @@ public class InventoryView{
     private JButton displayAll;
     private JButton exit;
     private GridBagConstraints gridBag = new GridBagConstraints();
-    private String choice = ""; //Button press choice.
-    Item newItem = new Item(); //Holds item information if an item is to be added.
+    //Button press choice.
+    private String choice = "";
+    //Holds item information if an item is to be added.
+    Item newItem = new Item();
     private static DefaultTableModel tableModel = new DefaultTableModel();
 
     //Edit item menu buttons
@@ -39,7 +44,6 @@ public class InventoryView{
     }
 
     public InventoryView() {
-
     }
 
     public void mainMenu() throws Exception {
@@ -110,7 +114,6 @@ public class InventoryView{
         editMenu.add(editDescription);
         editMenu.add(editLocation);
 
-
         //Inventory list border.
         panel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 5));
 
@@ -131,6 +134,7 @@ public class InventoryView{
         exit.addActionListener(InventoryController.getInstance());
     }
 
+    //Used to create initial table and to update table after changes were made in database.
     public static DefaultTableModel tableSetup() throws Exception {
         //Retrieve current MySQL connection.
         Connection conn = InventoryModel.getInstance().getConnection();
@@ -143,16 +147,16 @@ public class InventoryView{
         ResultSetMetaData metaData = results.getMetaData();
 
         //Put column names into vector.
-        Vector<String> columnNames = new Vector<String>();
+        Vector<String> columnNames = new Vector<>();
         int columnCount = metaData.getColumnCount();
         for (int column = 1; column <= columnCount; column++) {
             columnNames.add(metaData.getColumnName(column));
         }
 
         //Put data from MySQL table into vector.
-        Vector<Vector<Object>> data = new Vector<Vector<Object>>();
+        Vector<Vector<Object>> data = new Vector<>();
         while (results.next()) {
-            Vector<Object> vector = new Vector<Object>();
+            Vector<Object> vector = new Vector<>();
             for (int columnIndex = 1; columnIndex <= columnCount; columnIndex++) {
                 vector.add(results.getObject(columnIndex));
             }
@@ -164,6 +168,15 @@ public class InventoryView{
         return tableModel;
     }
 
+    public String getViewName() {
+        return this.getClass().getSimpleName();
+    }
+
+    public DefaultTableModel getTableModel() {
+        return tableModel;
+    }
+
+    //Main menu button getters.
     public JButton getAddButton() {
         return addItem;
     }
@@ -192,14 +205,7 @@ public class InventoryView{
         return frame;
     }
 
-    public String getViewName() {
-        return this.getClass().getSimpleName();
-    }
-
-    public DefaultTableModel getTableModel() {
-        return tableModel;
-    }
-
+    //Edit item menu button getters.
     public JPopupMenu getEditMenu() {
         return editMenu;
     }

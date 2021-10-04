@@ -1,7 +1,5 @@
 package InventoryModel;
-import InventoryController.InventoryController;
 
-import java.sql.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
@@ -30,12 +28,6 @@ public class InventoryModel {
 
     //Creates MySQL connection.
     public Connection setConnection() {
-        //Statement to be passed to MySQL.
-        String sql = "INSERT INTO inventory_items (item_name, item_id, item_count, item_description, item_location) "
-                + " VALUES (?, ?, ?, ?, ?)";
-        String item = "testItem";
-        String id = "0";
-
         //Connects to MySQL.
         try {
             Class.forName(driver);
@@ -48,11 +40,11 @@ public class InventoryModel {
         return conn;
     }
 
-        public Connection getConnection() {
-            if (conn  == null) {
-                setConnection();
-            }
-
-            return conn;
+    public Connection getConnection() {
+        if (conn  == null) {
+            setConnection();
         }
+
+        return conn;
+    }
 }

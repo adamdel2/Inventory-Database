@@ -15,19 +15,19 @@ public class Item extends ItemHandler{
     }
 
     public Item(String item_name, String item_count, String item_description, String item_location) {
-        this.item_name = item_name;
-        this.item_count = item_count;
-        this.item_description = item_description;
-        this.item_location = item_location;
+        Item.item_name = item_name;
+        Item.item_count = item_count;
+        Item.item_description = item_description;
+        Item.item_location = item_location;
     }
 
     //Setters and getters.
-    public static String getItemName() {
+    public String getItemName() {
         return item_name;
     }
 
     public void setItemName(String item_name) {
-        this.item_name = item_name;
+        Item.item_name = item_name;
     }
 
     public String getItemCount() {
@@ -35,7 +35,7 @@ public class Item extends ItemHandler{
     }
 
     public void setItemCount(String item_count) {
-        this.item_count = item_count;
+        Item.item_count = item_count;
     }
 
     public String getItemDescription() {
@@ -43,7 +43,7 @@ public class Item extends ItemHandler{
     }
 
     public void setItemDescription(String item_description) {
-        this.item_description = item_description;
+        Item.item_description = item_description;
     }
 
     public String getItemLocation() {
@@ -51,6 +51,6 @@ public class Item extends ItemHandler{
     }
 
     public void setItemLocation(String item_location) {
-        this.item_location = item_location;
+        Item.item_location = item_location;
     }
 }

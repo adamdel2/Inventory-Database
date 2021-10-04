@@ -3,8 +3,6 @@ import InventoryModel.*;
 import InventoryView.*;
 import InventoryController.*;
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -23,13 +21,5 @@ public class Main {
         InventoryView view = new InventoryView("Inventory");
         InventoryController controller = new InventoryController(view, db);
         controller.menu(view);
-
-        Item screwdriver = new Item("Screwdriver", "2", "Yellow phillips/flathead screwdriver", "Bottom left desk drawer");
-        //ItemHandler.addItem(screwdriver);
-        //screwdriver.removeItem(screwdriver);
-        //inventoryHandler.editItem(screwdriver);
-        //view.printAll();
-
-        //controller.addItem(screwdriver);
     }
 }

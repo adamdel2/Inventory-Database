@@ -1,8 +1,7 @@
 package InventoryController;
-import InventoryManager.*;
+
 import InventoryModel.*;
 import InventoryView.*;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -30,12 +29,12 @@ public class InventoryController extends InventoryView implements ActionListener
     }
 
     //Constructors
-    public InventoryController() throws Exception {
+    public InventoryController() {
     }
 
-    public InventoryController(InventoryView view, InventoryModel model) throws Exception {
-        this.view = view;
-        this.model = model;
+    public InventoryController(InventoryView view, InventoryModel model) {
+        InventoryController.view = view;
+        InventoryController.model = model;
         menu(view);
     }
 
@@ -50,7 +49,7 @@ public class InventoryController extends InventoryView implements ActionListener
             if (!isNull(menuItem)) {
                 try {
                     ItemHandler.addItem(menuItem);
-                    view.tableSetup();
+                    tableSetup();
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -62,7 +61,7 @@ public class InventoryController extends InventoryView implements ActionListener
             if (!isNull(menuItem)) {
                 try {
                     ItemHandler.removeItem(menuItem);
-                    view.tableSetup();
+                    tableSetup();
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -71,7 +70,19 @@ public class InventoryController extends InventoryView implements ActionListener
 
         if (e.getSource() == view.getEditButton()) {
             menuItem.setItemName(JOptionPane.showInputDialog(view.getFrame(), "Enter the item to change"));
-            showEditMenu(e);
+            //Original item name. Needed to find item in database.
+            String oldName = menuItem.getItemName();
+
+
+            //Verify item exists and retrieve data for item based on name.
+            try {
+                if (ItemHandler.exists(menuItem)) {
+                    ItemHandler.getItemData(menuItem);
+                    showEditMenu(e, oldName);
+                } else System.out.println("Item does not exist");
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
         }
 
         if (e.getSource() == view.getDisplayButton()) {
@@ -85,75 +96,94 @@ public class InventoryController extends InventoryView implements ActionListener
         }
     }
 
+    //Set view for Controller.
     public void menu(InventoryView view) {
-        this.view = getView();
+        InventoryController.view = getView();
     }
 
+    //Check if item has null for any value.
     public boolean isNull(Item item) {
         if (this.getItemName() == null || this.getItemCount() == null || this.getItemDescription() == null
-        || this.getItemLocation() == null) {
+                || this.getItemLocation() == null) {
             return true;
         }
 
         return false;
     }
 
-    //******************************************************STOPPED. text box doesn't appear.
-    private void showEditMenu(ActionEvent e) {
+    //Two joptionpanes populate when restarting edit********************************************************************
+    //Edit popup menu listeners.
+    private void showEditMenu(ActionEvent e, String oldName) {
         Component source = (Component) e.getSource();
         view.getEditMenu().show(source,0,0);
 
-        if (e.getSource() == view.getEditName()) {
-            menuItem.setItemName(JOptionPane.showInputDialog(view.getFrame(), "Enter the new item name"));
+        view.getEditName().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent editEvent) {
+                menuItem.setItemName(JOptionPane.showInputDialog(view.getFrame(), "Enter the new item name"));
+                editItemData(oldName);
+            }
+        });
+
+        view.getEditCount().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent editEvent) {
+                menuItem.setItemCount(JOptionPane.showInputDialog(view.getFrame(), "Enter the new item count"));
+                editItemData(oldName);
+            }
+        });
+
+        view.getEditDescription().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent editEvent) {
+                menuItem.setItemDescription(JOptionPane.showInputDialog(view.getFrame(),
+                        "Enter the new item description"));
+                editItemData(oldName);
+            }
+        });
+
+        view.getEditLocation().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent editEvent) {
+                menuItem.setItemLocation(JOptionPane.showInputDialog(view.getFrame(),
+                        "Enter the new item location"));
+                editItemData(oldName);
+            }
+        });
+
+
+    }
+
+    //Changes item in database after "Edit item" button press.
+    public void editItemData(String oldName) {
+        if (!isNull(menuItem)) {
+            try {
+                ItemHandler.editItem(menuItem, oldName);
+                tableSetup();
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
         }
     }
 
     //Setters and getters.
-    public InventoryModel getModel() {
-        return model;
-    }
-
-    public void setModel(InventoryModel model) {
-        this.model = model;
-    }
-
     public InventoryView getView() {
         return view;
-    }
-
-    public void setView(InventoryView view) {
-        this.view = view;
     }
 
     public String getItemName() {
         return item.getItemName();
     }
 
-    public void setItemName(String itemName) {
-        this.setItemName(itemName);
-    }
-
     public String getItemCount() {
         return item.getItemCount();
-    }
-
-    public void setItemCount(String itemCount) {
-        this.setItemCount(itemCount);
     }
 
     public String getItemDescription() {
         return item.getItemDescription();
     }
 
-    public void setItemDescription(String itemDescription) {
-        this.setItemDescription(itemDescription);
-    }
-
     public String getItemLocation() {
         return item.getItemLocation();
-    }
-
-    public void setItemLocation(String itemLocation) {
-        this.setItemLocation(itemLocation);
     }
 }
