@@ -21,8 +21,7 @@ public class InventoryView{
     private JButton addItem;
     private JButton removeItem;
     private JButton editItem;
-    private JButton displayItem;
-    private JButton displayAll;
+    private JButton itemSearch;
     private JButton exit;
     private GridBagConstraints gridBag = new GridBagConstraints();
     //Button press choice.
@@ -55,13 +54,13 @@ public class InventoryView{
         addItem = new JButton("Add item");
         removeItem = new JButton("Remove item");
         editItem = new JButton("Edit item");
-        displayItem = new JButton("Display item data");
-        displayAll = new JButton("Display full inventory");
+        itemSearch = new JButton("Search for item");
         exit = new JButton("Exit");
 
         //Set up scrollPane.
         textArea.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         textArea.setAutoCreateColumnsFromModel(true);
+        textArea.setAutoCreateRowSorter(true);
         textArea.getColumnModel().getColumn(0).setMinWidth(140);
         textArea.getColumnModel().getColumn(1).setMinWidth(50);
         textArea.getColumnModel().getColumn(2).setMinWidth(50);
@@ -79,8 +78,7 @@ public class InventoryView{
         addItem.setPreferredSize(new Dimension(150,30));
         removeItem.setPreferredSize(new Dimension(150,30));
         editItem.setPreferredSize(new Dimension(150,30));
-        displayItem.setPreferredSize(new Dimension(150,30));
-        displayAll.setPreferredSize(new Dimension(150,30));
+        itemSearch.setPreferredSize(new Dimension(150,30));
         exit.setPreferredSize(new Dimension(150,30));
 
         //Align and add buttons
@@ -95,10 +93,7 @@ public class InventoryView{
         buttonPanel.add(editItem, gridBag);
         gridBag.gridx = 3;
         gridBag.gridy = 1;
-        buttonPanel.add(displayItem, gridBag);
-        gridBag.gridx = 4;
-        gridBag.gridy = 1;
-        buttonPanel.add(displayAll, gridBag);
+        buttonPanel.add(itemSearch, gridBag);
         gridBag.gridx = 5;
         gridBag.gridy = 1;
         buttonPanel.add(exit, gridBag);
@@ -124,13 +119,14 @@ public class InventoryView{
         frame.setSize(800, 450);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(true);
-
+        //Change frame icon.
+        frame.setIconImage(Toolkit.getDefaultToolkit().getImage(
+                "C:\\Users\\Adam\\Desktop\\CS Projects\\Icons\\Hot Giraffe.png"));
         //Button interactions
         addItem.addActionListener(InventoryController.getInstance());
         removeItem.addActionListener(InventoryController.getInstance());
         editItem.addActionListener(InventoryController.getInstance());
-        displayItem.addActionListener(InventoryController.getInstance());
-        displayAll.addActionListener(InventoryController.getInstance());
+        itemSearch.addActionListener(InventoryController.getInstance());
         exit.addActionListener(InventoryController.getInstance());
     }
 
@@ -189,12 +185,8 @@ public class InventoryView{
         return editItem;
     }
 
-    public JButton getDisplayButton() {
-        return displayItem;
-    }
-
-    public JButton getDisplayAllButton() {
-        return displayAll;
+    public JButton getSearchButton() {
+        return itemSearch;
     }
 
     public JButton getExitButton() {

@@ -85,10 +85,7 @@ public class InventoryController extends InventoryView implements ActionListener
             }
         }
 
-        if (e.getSource() == view.getDisplayButton()) {
-        }
-
-        if (e.getSource() == view.getDisplayAllButton()) {
+        if (e.getSource() == view.getSearchButton()) {
         }
 
         if (e.getSource() == view.getExitButton()) {

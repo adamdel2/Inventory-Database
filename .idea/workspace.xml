@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="22616b4b-7841-4628-9e97-06c08158b50f" name="Changes" comment="Initial setup">
+    <list default="true" id="22616b4b-7841-4628-9e97-06c08158b50f" name="Changes" comment="Added item editing functionality.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/InventoryController/InventoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/InventoryController/InventoryController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/InventoryManager/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/InventoryManager/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/InventoryModel/InventoryModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/InventoryModel/InventoryModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/InventoryModel/Item.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/InventoryModel/Item.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/InventoryModel/ItemHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/InventoryModel/ItemHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/InventoryView/InventoryView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/InventoryView/InventoryView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/InventoryController/InventoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InventoryController/InventoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/InventoryView/InventoryView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InventoryView/InventoryView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
