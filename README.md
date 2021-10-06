@@ -1,9 +1,15 @@
 # Inventory-Database
 Inventory database
 
-MySQL inventory: contains table setup for MySQL.\
-Target: Maven information.\
 Project was set up using MVC pattern and utilizes MySQL for database management.\
+
+mysql inventory: contains table setup for MySQL.\
+MySQL user/pass is in InventoryModel (not secure). Default host information.
+MySQL info: HostName- 127.0.0.1 Port- 3306\
+Copy mysql inventory.sql text into MySQL to set up a table with the correct naming for the project.\
+
+Target: Maven information.\
+
 InventoryController: handles any change calls to InventoryModel and InventoryView.\
 InventoryModel: handles changes to database.\
 InventoryModel-Item: items that are to be manipulated in the database.\
