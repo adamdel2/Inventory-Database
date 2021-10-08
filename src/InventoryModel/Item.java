@@ -53,4 +53,14 @@ public class Item extends ItemHandler{
     public void setItemLocation(String item_location) {
         Item.item_location = item_location;
     }
+
+    //Copy item data.
+    public void setEquals(Item itemToCopy) {
+        if (itemToCopy != null) {
+            this.setItemName(itemToCopy.getItemName());
+            this.setItemCount(itemToCopy.getItemCount());
+            this.setItemDescription(itemToCopy.getItemDescription());
+            this.setItemLocation(itemToCopy.getItemLocation());
+        }
+    }
 }

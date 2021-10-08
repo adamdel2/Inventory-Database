@@ -11,6 +11,7 @@ import javax.swing.table.DefaultTableModel;
 import java.util.Vector;
 
 public class InventoryView{
+    private static Connection conn = InventoryModel.getInstance().getConnection();
     private JFrame frame;
     //Text display of inventory.
     private JTable textArea;
@@ -43,6 +44,7 @@ public class InventoryView{
     }
 
     public InventoryView() {
+        //Retrieve current MySQL connection.
     }
 
     public void mainMenu() throws Exception {
@@ -122,7 +124,7 @@ public class InventoryView{
         //Change frame icon.
         frame.setIconImage(Toolkit.getDefaultToolkit().getImage(
                 "C:\\Users\\Adam\\Desktop\\CS Projects\\Icons\\Hot Giraffe.png"));
-        //Button interactions
+        //Button listeners
         addItem.addActionListener(InventoryController.getInstance());
         removeItem.addActionListener(InventoryController.getInstance());
         editItem.addActionListener(InventoryController.getInstance());
@@ -132,8 +134,6 @@ public class InventoryView{
 
     //Used to create initial table and to update table after changes were made in database.
     public static DefaultTableModel tableSetup() throws Exception {
-        //Retrieve current MySQL connection.
-        Connection conn = InventoryModel.getInstance().getConnection();
         //Statement to be passed to MySQL.
         String sql = "SELECT * FROM inventory_items;";
         PreparedStatement pst = conn.prepareStatement(sql);

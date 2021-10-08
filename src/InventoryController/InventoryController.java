@@ -2,8 +2,6 @@ package InventoryController;
 
 import InventoryModel.*;
 import InventoryView.*;
-import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -12,7 +10,8 @@ public class InventoryController extends InventoryView implements ActionListener
     private static InventoryModel model;
     private static InventoryView view = new InventoryView();
     private Item item = new Item();
-    Item menuItem = new Item();
+    private static String oldName = "";
+    private static Item menuItem = new Item();
 
     //Make only one instance of InventoryController
     private static InventoryController controller;
@@ -30,6 +29,7 @@ public class InventoryController extends InventoryView implements ActionListener
 
     //Constructors
     public InventoryController() {
+        menu(view);
     }
 
     public InventoryController(InventoryView view, InventoryModel model) {
@@ -40,57 +40,10 @@ public class InventoryController extends InventoryView implements ActionListener
 
     //Button presses for InventoryView frame.
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == view.getAddButton()) {
-            menuItem.setItemName(JOptionPane.showInputDialog(view.getFrame(), "Enter the item name"));
-            menuItem.setItemCount(JOptionPane.showInputDialog(view.getFrame(), "Enter the item count"));
-            menuItem.setItemDescription(JOptionPane.showInputDialog(view.getFrame(), "Enter the item description"));
-            menuItem.setItemLocation(JOptionPane.showInputDialog(view.getFrame(), "Enter the item location"));
-
-            if (!isNull(menuItem)) {
-                try {
-                    ItemHandler.addItem(menuItem);
-                    tableSetup();
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            }
-        }
-
-        if (e.getSource() == view.getRemoveButton()) {
-            menuItem.setItemName(JOptionPane.showInputDialog(view.getFrame(), "Enter the item name to delete"));
-            if (!isNull(menuItem)) {
-                try {
-                    ItemHandler.removeItem(menuItem);
-                    tableSetup();
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            }
-        }
-
-        if (e.getSource() == view.getEditButton()) {
-            menuItem.setItemName(JOptionPane.showInputDialog(view.getFrame(), "Enter the item to change"));
-            //Original item name. Needed to find item in database.
-            String oldName = menuItem.getItemName();
-
-
-            //Verify item exists and retrieve data for item based on name.
-            try {
-                if (ItemHandler.exists(menuItem)) {
-                    ItemHandler.getItemData(menuItem);
-                    showEditMenu(e, oldName);
-                } else System.out.println("Item does not exist");
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
-        }
-
-        if (e.getSource() == view.getSearchButton()) {
-        }
-
-        if (e.getSource() == view.getExitButton()) {
-            System.exit(0);
-        }
+        menuItem.setEquals(ActionHandler.getActionItems());
+        //Check if edit item menu button listeners have been created.
+        editButtons(e);
+        ActionHandler.getInstance().menuActions(e);
     }
 
     //Set view for Controller.
@@ -108,51 +61,27 @@ public class InventoryController extends InventoryView implements ActionListener
         return false;
     }
 
-    //Two joptionpanes populate when restarting edit********************************************************************
-    //Edit popup menu listeners.
-    private void showEditMenu(ActionEvent e, String oldName) {
-        Component source = (Component) e.getSource();
-        view.getEditMenu().show(source,0,0);
+    //Create action listeners for edit item menu if there are none.
+    private void editButtons(ActionEvent e) {
+        if (view.getEditName().getActionListeners().length == 0) {
+            view.getEditName().addActionListener(this);
+        }
 
-        view.getEditName().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent editEvent) {
-                menuItem.setItemName(JOptionPane.showInputDialog(view.getFrame(), "Enter the new item name"));
-                editItemData(oldName);
-            }
-        });
+        if (view.getEditCount().getActionListeners().length == 0) {
+            view.getEditCount().addActionListener(this);
+        }
 
-        view.getEditCount().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent editEvent) {
-                menuItem.setItemCount(JOptionPane.showInputDialog(view.getFrame(), "Enter the new item count"));
-                editItemData(oldName);
-            }
-        });
+        if (view.getEditDescription().getActionListeners().length == 0) {
+            view.getEditDescription().addActionListener(this);
+        }
 
-        view.getEditDescription().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent editEvent) {
-                menuItem.setItemDescription(JOptionPane.showInputDialog(view.getFrame(),
-                        "Enter the new item description"));
-                editItemData(oldName);
-            }
-        });
-
-        view.getEditLocation().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent editEvent) {
-                menuItem.setItemLocation(JOptionPane.showInputDialog(view.getFrame(),
-                        "Enter the new item location"));
-                editItemData(oldName);
-            }
-        });
-
-
+        if (view.getEditLocation().getActionListeners().length == 0) {
+            view.getEditLocation().addActionListener(this);
+        }
     }
 
     //Changes item in database after "Edit item" button press.
-    public void editItemData(String oldName) {
+    public void editItemData(String oldName, Item menuItem) {
         if (!isNull(menuItem)) {
             try {
                 ItemHandler.editItem(menuItem, oldName);
@@ -164,6 +93,9 @@ public class InventoryController extends InventoryView implements ActionListener
     }
 
     //Setters and getters.
+    public static Item getMenuItem() {
+        return menuItem;
+    }
     public InventoryView getView() {
         return view;
     }
