@@ -21,6 +21,7 @@ public class ItemHandler {
     public ItemHandler(){
     }
 
+    //Add item to database with given parameters.
     public static void addItem(Item item) throws Exception {
         sql = "INSERT INTO inventory_items (item_name, item_id, item_count, item_description, item_location) "
                 + " VALUES (?, ?, ?, ?, ?)";
@@ -35,11 +36,12 @@ public class ItemHandler {
         pst.executeUpdate();
     }
 
+    //Remove item in database using the item name.
     public static void removeItem(Item item) throws Exception {
-        sql = "DELETE FROM inventory_items WHERE item_name = '";
-        sql = sql.concat(item.getItemName() + "'"
-                + "ORDER BY item_id LIMIT 1");
+        sql = "DELETE FROM inventory_items WHERE item_name = ?" +
+                "ORDER BY item_id LIMIT 1";
         pst = conn.prepareStatement(sql);
+        pst.setString(1, item.getItemName());
 
         //Push changes to current table.
         pst.executeUpdate();

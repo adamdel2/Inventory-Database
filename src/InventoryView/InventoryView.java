@@ -38,6 +38,7 @@ public class InventoryView{
     private JMenuItem editDescription;
     private JMenuItem editLocation;
 
+    //Constructors
     public InventoryView(String title) throws Exception {
         frame = new JFrame(title);
         mainMenu();
@@ -47,6 +48,7 @@ public class InventoryView{
         //Retrieve current MySQL connection.
     }
 
+    //Interface setup.
     public void mainMenu() throws Exception {
         panel = new JPanel(new GridBagLayout());
         buttonPanel = new JPanel(new GridBagLayout());
@@ -164,6 +166,7 @@ public class InventoryView{
         return tableModel;
     }
 
+    //Getters.
     public String getViewName() {
         return this.getClass().getSimpleName();
     }
@@ -216,5 +219,27 @@ public class InventoryView{
 
     public JMenuItem getEditLocation() {
         return editLocation;
+    }
+
+    //Popup dialog box for user inputs.
+    public String inputDialogBox(String message, String type) {
+        String userInput = "";
+        boolean initialInput = true;
+
+        //Ask for input using dialog box while empty.
+        while (userInput.isEmpty() || userInput == null) {
+            if (!initialInput) {
+                JOptionPane.showMessageDialog(getFrame(), "Please enter a " + type);
+            }
+            initialInput = false;
+            userInput = JOptionPane.showInputDialog(getFrame(), message);
+
+            //Return to main menu if cancel is pressed.
+            if (userInput == null) {
+                getFrame().setVisible(true);
+            }
+        }
+
+        return userInput;
     }
 }

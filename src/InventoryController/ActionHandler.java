@@ -28,16 +28,12 @@ public class ActionHandler extends InventoryController implements ActionListener
         }
     }
 
-    public ActionHandler(){
-        view = InventoryController.getInstance().getView();
-        model = InventoryModel.getInstance();
-    }
-
+    //Returns ActionHandler instance because there is only one.
     public static ActionHandler getInstance() {
         return actionHandler;
     }
 
-    //Constructor
+    //Constructors
     public ActionHandler(ActionEvent e, InventoryView view, InventoryModel model, Item menuItem) {
         event = e;
         ActionHandler.view = view;
@@ -46,16 +42,34 @@ public class ActionHandler extends InventoryController implements ActionListener
         ActionHandler.menuItem = menuItem;
     }
 
+    public ActionHandler(){
+        view = InventoryController.getInstance().getView();
+        model = InventoryModel.getInstance();
+    }
+
     //Event handlers for main menu and edit item menu.
     public void menuActions (ActionEvent e) {
+        String name = "name";
+        String count = "count";
+        String description = "description";
+        String location  = "location";
+
         //Add item.
         if (e.getSource() == view.getAddButton()) {
-            InventoryController.getMenuItem().setItemName(JOptionPane.showInputDialog(view.getFrame(), "Enter the item name"));
-            InventoryController.getMenuItem().setItemCount(JOptionPane.showInputDialog(view.getFrame(), "Enter the item count"));
-            InventoryController.getMenuItem().setItemDescription(JOptionPane.showInputDialog(view.getFrame(), "Enter the item description"));
-            InventoryController.getMenuItem().setItemLocation(JOptionPane.showInputDialog(view.getFrame(), "Enter the item location"));
+            try {
+                InventoryController.getMenuItem().setItemName(inputDialogBox(
+                        "Enter the item name", name));
+                InventoryController.getMenuItem().setItemCount(inputDialogBox(
+                        "Enter the item count", count));
+                InventoryController.getMenuItem().setItemDescription(inputDialogBox(
+                        "Enter the item description", description));
+                InventoryController.getMenuItem().setItemLocation(inputDialogBox(
+                        "Enter the item location", location));
+            } catch (Exception empty) {
+                System.out.println("No input received");
+            }
 
-            if (!isNull(InventoryController.getMenuItem())) {
+            if (!isNull(InventoryController.getMenuItem()) && !isEmpty(InventoryController.getMenuItem())) {
                 try {
                     ItemHandler.addItem(InventoryController.getMenuItem());
                     tableSetup();
@@ -67,7 +81,13 @@ public class ActionHandler extends InventoryController implements ActionListener
 
         //Remove item.
         if (e.getSource() == view.getRemoveButton()) {
-            InventoryController.getMenuItem().setItemName(JOptionPane.showInputDialog(view.getFrame(), "Enter the item name to delete"));
+            try {
+                InventoryController.getMenuItem().setItemName(inputDialogBox(
+                        "Enter the item name to delete", name));
+            } catch (Exception empty) {
+                System.out.println("No input received");
+            }
+
             if (!isNull(InventoryController.getMenuItem())) {
                 try {
                     ItemHandler.removeItem(InventoryController.getMenuItem());
@@ -80,8 +100,12 @@ public class ActionHandler extends InventoryController implements ActionListener
 
         //Edit item.
         if (e.getSource() == view.getEditButton()) {
-            InventoryController.getMenuItem().setItemName(JOptionPane.showInputDialog(view.getFrame(), "Enter the item to change"));
-            oldName = InventoryController.getMenuItem().getItemName();
+            try {
+                InventoryController.getMenuItem().setItemName(inputDialogBox("Enter the item to change", name));
+                oldName = InventoryController.getMenuItem().getItemName();
+            } catch (Exception empty) {
+                System.out.println("No input received");
+            }
 
             //Verify item exists and set up edit item popup location.
             try {
@@ -89,13 +113,18 @@ public class ActionHandler extends InventoryController implements ActionListener
                     ItemHandler.getItemData(InventoryController.getMenuItem());
                     Component source = (Component) e.getSource();
                     view.getEditMenu().show(source,0,0);
-                } else System.out.println("Item does not exist");
+                }
             } catch (Exception ex) {
-                ex.printStackTrace();
+                //Return to main menu if cancel is pressed.
+                if (Integer.parseInt(InventoryController.getMenuItem().getItemName()) == JOptionPane.CANCEL_OPTION) {
+                    getFrame().setVisible(true);
+                } else {
+                    JOptionPane.showMessageDialog(getFrame(), "Item does not exist");
+                }
             }
         }
 
-        //Search for item.**********************************************************************************************
+        //Search for item. Not implemented******************************************************************************
         if (e.getSource() == view.getSearchButton()) {
             InventoryController.getMenuItem().setItemName(JOptionPane.showInputDialog(view.getFrame(),
                     "Enter the item name to search for"));

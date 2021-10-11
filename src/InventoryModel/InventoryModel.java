@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 
 //Connection handling
 public class InventoryModel {
+    //MySQL connection variable.
     private static Connection conn = null;
     //MySQL required information
     private final String driver = "com.mysql.cj.jdbc.Driver";
@@ -22,6 +23,7 @@ public class InventoryModel {
         }
     }
 
+    //Returns InventoryModel instance because there is only one.
     public static InventoryModel getInstance() {
         return model;
     }
@@ -40,6 +42,7 @@ public class InventoryModel {
         return conn;
     }
 
+    //Return the connection if established, or create connection if none.
     public Connection getConnection() {
         if (conn  == null) {
             setConnection();

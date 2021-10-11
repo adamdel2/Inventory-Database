@@ -4,41 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78a521c9-163c-4736-ba4d-b133e808c920" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.idea/libraries/mysql_connector_java_8_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="78a521c9-163c-4736-ba4d-b133e808c920" name="Changes" comment="Fixed multiple &quot;Edit item&quot; menu instances. Created separate ActionEvent handler.">
+      <change beforePath="$PROJECT_DIR$/src/InventoryController/ActionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InventoryController/ActionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/InventoryController/InventoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InventoryController/InventoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/InventoryManager/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InventoryManager/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/InventoryModel/InventoryModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InventoryModel/InventoryModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/InventoryModel/ItemHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InventoryModel/ItemHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/InventoryView/InventoryView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InventoryView/InventoryView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/InventoryController/InventoryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/InventoryController/InventoryController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/InventoryManager/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/InventoryManager/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/InventoryModel/Item.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/InventoryModel/Item.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/InventoryView/InventoryView.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/InventoryView/InventoryView.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/target/classes/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/.idea/libraries/mysql_connector_java_8_0.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/target/classes/.idea/misc.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/target/classes/.idea/runConfigurations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/target/classes/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/target/classes/mysql for inventory/mysql inventory.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/target/classes/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/pom.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/InventoryDatabase-1.0-SNAPSHOT.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/.idea/libraries/mysql_connector_java_8_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/.idea/runConfigurations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/mysql for inventory/mysql inventory.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/pom.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/InventoryDatabase-1.0-SNAPSHOT.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/.idea/libraries/mysql_connector_java_8_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/.idea/runConfigurations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/pom.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/InventoryDatabase-1.0-SNAPSHOT.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/target/classes/target/classes/target/classes/target/maven-archiver/pom.properties" beforeDir="false" />
@@ -52,6 +39,13 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -85,7 +79,7 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.647541" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -116,6 +110,30 @@
       <option name="presentableId" value="Default" />
       <updated>1633643983952</updated>
     </task>
+    <task id="LOCAL-00001" summary="Fixed multiple &quot;Edit item&quot; menu instances. Created separate ActionEvent handler.">
+      <created>1633678417425</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1633678417425</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Fixed multiple &quot;Edit item&quot; menu instances. Created separate ActionEvent handler." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed multiple &quot;Edit item&quot; menu instances. Created separate ActionEvent handler." />
   </component>
 </project>

@@ -18,6 +18,7 @@ public class Main {
             System.out.println("Look and Feel not set");
         }
 
+        //Creating the view and controller to be used.
         InventoryView view = new InventoryView("Inventory");
         InventoryController controller = new InventoryController(view, db);
         controller.menu(view);

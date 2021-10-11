@@ -10,7 +10,7 @@ public class InventoryController extends InventoryView implements ActionListener
     private static InventoryModel model;
     private static InventoryView view = new InventoryView();
     private Item item = new Item();
-    private static String oldName = "";
+    //Used to perform item manipulations in both InventoryController and ActionHandler.
     private static Item menuItem = new Item();
 
     //Make only one instance of InventoryController
@@ -23,6 +23,7 @@ public class InventoryController extends InventoryView implements ActionListener
         }
     }
 
+    //Returns InventoryController instance because there is only one.
     public static InventoryController getInstance() {
         return controller;
     }
@@ -55,6 +56,15 @@ public class InventoryController extends InventoryView implements ActionListener
     public boolean isNull(Item item) {
         if (this.getItemName() == null || this.getItemCount() == null || this.getItemDescription() == null
                 || this.getItemLocation() == null) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public boolean isEmpty(Item item) {
+        if (this.getItemName().isEmpty() || this.getItemCount().isEmpty() || this.getItemDescription().isEmpty()
+                || this.getItemLocation().isEmpty()) {
             return true;
         }
 
@@ -96,6 +106,7 @@ public class InventoryController extends InventoryView implements ActionListener
     public static Item getMenuItem() {
         return menuItem;
     }
+
     public InventoryView getView() {
         return view;
     }
