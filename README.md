@@ -14,6 +14,7 @@ Target: Maven information.
 
 * Class info\
 InventoryController: handles any change calls to InventoryModel and InventoryView.\
+InventoryController-ActionHandler: handles menu button press interactions.\
 InventoryModel: handles changes to database.\
 InventoryModel-Item: items that are to be manipulated in the database.\
 InventoryModel-ItemHandler: handles Item changes that need to be pushed to the database.\
