@@ -124,10 +124,24 @@ public class ActionHandler extends InventoryController implements ActionListener
             }
         }
 
-        //Search for item. Not implemented******************************************************************************
+        //Search for item by name.
         if (e.getSource() == view.getSearchButton()) {
-            InventoryController.getMenuItem().setItemName(JOptionPane.showInputDialog(view.getFrame(),
-                    "Enter the item name to search for"));
+            try {
+                InventoryController.getMenuItem().setItemName(inputDialogBox(
+                        "Enter the item to search for", name));
+                if (ItemHandler.exists(InventoryController.getMenuItem())) {
+                    ItemHandler.getItemData(InventoryController.getMenuItem());
+                    JOptionPane.showMessageDialog(getFrame(), "Name: " +
+                            InventoryController.getMenuItem().getItemName() + "\nCount: " +
+                            InventoryController.getMenuItem().getItemCount() + "\nDescription: " +
+                            InventoryController.getMenuItem().getItemDescription() + "\nLocation: " +
+                            InventoryController.getMenuItem().getItemLocation());
+                } else {
+                    JOptionPane.showMessageDialog(getFrame(), "Item does not exist");
+                }
+            } catch (Exception empty) {
+                System.out.println("No input received");
+            }
         }
 
         //Exit program.
