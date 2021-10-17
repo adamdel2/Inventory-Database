@@ -23,14 +23,14 @@ public class InventoryModel {
         }
     }
 
-    //Returns InventoryModel instance because there is only one.
+    //Return InventoryModel instance because there is only one.
     public static InventoryModel getInstance() {
         return model;
     }
 
-    //Creates MySQL connection.
+    //Create MySQL connection.
     public Connection setConnection() {
-        //Connects to MySQL.
+        //Connect to MySQL.
         try {
             Class.forName(driver);
             conn = DriverManager.getConnection(url, username, password);

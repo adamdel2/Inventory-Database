@@ -25,6 +25,7 @@ public class ItemHandler {
     public static void addItem(Item item) throws Exception {
         sql = "INSERT INTO inventory_items (item_name, item_id, item_count, item_description, item_location) "
                 + " VALUES (?, ?, ?, ?, ?)";
+        //Create prepared statement and fill with data.
         pst = conn.prepareStatement(sql);
         pst.setString(1, item.getItemName());
         pst.setString(2, null);
@@ -40,6 +41,7 @@ public class ItemHandler {
     public static void removeItem(Item item) throws Exception {
         sql = "DELETE FROM inventory_items WHERE item_name = ?" +
                 "ORDER BY item_id LIMIT 1";
+        //Create prepared statement and fill with data.
         pst = conn.prepareStatement(sql);
         pst.setString(1, item.getItemName());
 
@@ -52,8 +54,7 @@ public class ItemHandler {
         sql = "UPDATE inventory_items SET item_name = ?, " +
                 "item_count = ?, item_description = ?, item_location = ?" +
                 "WHERE item_name = ?";
-
-        //Fill prepared statement data.
+        //Create prepared statement and fill with data.
         pst = conn.prepareStatement(sql);
         pst.setString(1, item.getItemName());
         pst.setString(2, item.getItemCount());
@@ -70,8 +71,8 @@ public class ItemHandler {
         boolean exists = false;
 
         sql = "SELECT * FROM inventory_items WHERE item_name = ?";
+        //Create prepared statement and fill with data.
         pst = conn.prepareStatement(sql);
-        //Add item name to "sql" string.
         pst.setString(1, item.getItemName());
 
         ResultSet results = null;
@@ -88,8 +89,10 @@ public class ItemHandler {
     //Find item in database.
     public static Item getItemData(Item item) throws Exception {
         sql = "SELECT * FROM inventory_items WHERE item_name = ?";
+        //Create prepared statement and fill with data.
         pst = conn.prepareStatement(sql);
         pst.setString(1, item.getItemName());
+        //Holds item data obtained from database.
         ResultSet itemData = pst.executeQuery();
 
         if(itemData.next()) {

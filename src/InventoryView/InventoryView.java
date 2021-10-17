@@ -25,10 +25,6 @@ public class InventoryView{
     private JButton itemSearch;
     private JButton exit;
     private GridBagConstraints gridBag = new GridBagConstraints();
-    //Button press choice.
-    private String choice = "";
-    //Holds item information if an item is to be added.
-    Item newItem = new Item();
     private static DefaultTableModel tableModel = new DefaultTableModel();
 
     //Edit item menu buttons
@@ -123,9 +119,6 @@ public class InventoryView{
         frame.setSize(800, 450);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(true);
-        //Change frame icon.
-        frame.setIconImage(Toolkit.getDefaultToolkit().getImage(
-                "C:\\Users\\Adam\\Desktop\\CS Projects\\Icons\\Hot Giraffe.png"));
         //Button listeners
         addItem.addActionListener(InventoryController.getInstance());
         removeItem.addActionListener(InventoryController.getInstance());
@@ -142,6 +135,7 @@ public class InventoryView{
         //Creates a set for the rows stored in current table.
         ResultSet results = pst.executeQuery(sql);
 
+        //Holds data from database.
         ResultSetMetaData metaData = results.getMetaData();
 
         //Put column names into vector.

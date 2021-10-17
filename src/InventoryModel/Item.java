@@ -1,57 +1,57 @@
 package InventoryModel;
 
 public class Item extends ItemHandler{
-    private static String item_name;
-    private static String item_count;
-    private static String item_description;
-    private static String item_location;
+    private static String itemName;
+    private static String itemCount;
+    private static String itemDescription;
+    private static String itemLocation;
 
     //Constructors
     public Item() {
-        item_name = "";
-        item_count = "0";
-        item_description = "";
-        item_location = "";
+        itemName = "";
+        itemCount = "0";
+        itemDescription = "";
+        itemLocation = "";
     }
 
-    public Item(String item_name, String item_count, String item_description, String item_location) {
-        Item.item_name = item_name;
-        Item.item_count = item_count;
-        Item.item_description = item_description;
-        Item.item_location = item_location;
+    public Item(String itemName, String itemCount, String itemDescription, String itemLocation) {
+        Item.itemName = itemName;
+        Item.itemCount = itemCount;
+        Item.itemDescription = itemDescription;
+        Item.itemLocation = itemLocation;
     }
 
     //Setters and getters.
     public String getItemName() {
-        return item_name;
+        return itemName;
     }
 
-    public void setItemName(String item_name) {
-        Item.item_name = item_name;
+    public void setItemName(String itemName) {
+        Item.itemName = itemName;
     }
 
     public String getItemCount() {
-        return item_count;
+        return itemCount;
     }
 
-    public void setItemCount(String item_count) {
-        Item.item_count = item_count;
+    public void setItemCount(String itemCount) {
+        Item.itemCount = itemCount;
     }
 
     public String getItemDescription() {
-        return item_description;
+        return itemDescription;
     }
 
-    public void setItemDescription(String item_description) {
-        Item.item_description = item_description;
+    public void setItemDescription(String itemDescription) {
+        Item.itemDescription = itemDescription;
     }
 
     public String getItemLocation() {
-        return item_location;
+        return itemLocation;
     }
 
-    public void setItemLocation(String item_location) {
-        Item.item_location = item_location;
+    public void setItemLocation(String itemLocation) {
+        Item.itemLocation = itemLocation;
     }
 
     //Copy item data.

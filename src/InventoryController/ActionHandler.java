@@ -66,9 +66,10 @@ public class ActionHandler extends InventoryController implements ActionListener
                 InventoryController.getMenuItem().setItemLocation(inputDialogBox(
                         "Enter the item location", location));
             } catch (Exception empty) {
-                System.out.println("No input received");
+                System.out.println("Cancelled");
             }
 
+            //Ensure all item parameters are filled.
             if (!isNull(InventoryController.getMenuItem()) && !isEmpty(InventoryController.getMenuItem())) {
                 try {
                     ItemHandler.addItem(InventoryController.getMenuItem());
@@ -85,7 +86,7 @@ public class ActionHandler extends InventoryController implements ActionListener
                 InventoryController.getMenuItem().setItemName(inputDialogBox(
                         "Enter the item name to delete", name));
             } catch (Exception empty) {
-                System.out.println("No input received");
+                System.out.println("Cancelled");
             }
 
             if (!isNull(InventoryController.getMenuItem())) {
@@ -104,7 +105,7 @@ public class ActionHandler extends InventoryController implements ActionListener
                 InventoryController.getMenuItem().setItemName(inputDialogBox("Enter the item to change", name));
                 oldName = InventoryController.getMenuItem().getItemName();
             } catch (Exception empty) {
-                System.out.println("No input received");
+                System.out.println("Cancelled");
             }
 
             //Verify item exists and set up edit item popup location.
@@ -140,7 +141,7 @@ public class ActionHandler extends InventoryController implements ActionListener
                     JOptionPane.showMessageDialog(getFrame(), "Item does not exist");
                 }
             } catch (Exception empty) {
-                System.out.println("No input received");
+                System.out.println("Cancelled");
             }
         }
 
@@ -175,6 +176,7 @@ public class ActionHandler extends InventoryController implements ActionListener
         }
     }
 
+    //Getter
     public static Item getActionItems() {
         return menuItem;
     }

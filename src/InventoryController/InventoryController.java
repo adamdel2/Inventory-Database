@@ -62,6 +62,7 @@ public class InventoryController extends InventoryView implements ActionListener
         return false;
     }
 
+    //Check if all item parameters are filled.
     public boolean isEmpty(Item item) {
         if (this.getItemName().isEmpty() || this.getItemCount().isEmpty() || this.getItemDescription().isEmpty()
                 || this.getItemLocation().isEmpty()) {
