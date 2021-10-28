@@ -7,9 +7,10 @@ import java.sql.DriverManager;
 public class InventoryModel {
     //MySQL connection variable.
     private static Connection conn = null;
-    //MySQL required information
+    //MySQL required information.
     private final String driver = "com.mysql.cj.jdbc.Driver";
     private final String url = "jdbc:mysql://localhost:3306/inventory";
+    //Just placeholder info.
     private final String username = "root";
     private final String password = "SUPERstrong1";
 
